@@ -2,7 +2,9 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
 name: Node.js CI
-
+env:
+  AZUSER: afaridiaz
+  
 on:
   push:
     branches: [ "main" ]
@@ -23,6 +25,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: crear arquitectura
       uses: actions/setup-node@v3
+    - run: az login -u ${{ env.AZUSER }} -p ${{ secrets.AZUSER_PASS }}
     - run: az appservice plan create --resource-group MY_RESOURCE_GROUP --name MY_APP_SERVICE_PLAN --is-linux
     - run: az webapp create --name MY_WEBAPP_NAME --plan MY_APP_SERVICE_PLAN --resource-group MY_RESOURCE_GROUP --runtime "NODE|18-lts"
     - name: Use Node.js ${{ matrix.node-version }}
