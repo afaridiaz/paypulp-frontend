@@ -27,12 +27,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: crear arquitectura
-      uses: actions/setup-node@v3
-    - run: az login -u ${{ env.AZUSER }} -p ${{ env.AZUSER_PASS }}
-    - run: az group create -l westus -n ${{ env.MY_RESOURCE_GROUP }}
-    - run: az appservice plan create --resource-group ${{ env.MY_RESOURCE_GROUP }} --name MY_APP_SERVICE_PLAN --is-linux
-    - run: az webapp create --name MY_WEBAPP_NAME --plan MY_APP_SERVICE_PLAN --resource-group ${{ env.MY_RESOURCE_GROUP }} --runtime "NODE|18-lts"
+    #- name: crear arquitectura
+    #  uses: actions/setup-node@v3
+    #- run: az login -u ${{ env.AZUSER }} -p ${{ env.AZUSER_PASS }}
+    #- run: az group create -l westus -n ${{ env.MY_RESOURCE_GROUP }}
+    #- run: az appservice plan create --resource-group ${{ env.MY_RESOURCE_GROUP }} --name MY_APP_SERVICE_PLAN --is-linux
+    #- run: az webapp create --name MY_WEBAPP_NAME --plan MY_APP_SERVICE_PLAN --resource-group ${{ env.MY_RESOURCE_GROUP }} --runtime "NODE|18-lts"
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
