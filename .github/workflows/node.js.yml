@@ -4,14 +4,14 @@
 name: Node.js CI
 env:
   AZUSER: afaridiaz@gmail.com
-  AZUSER_PASS: alFAdi958983
   MY_RESOURCE_GROUP: migrupoderecursos
   AZURE_WEBAPP_NAME: faritoweb
   AZURE_WEBAPP_PACKAGE_PATH: '.'
   
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:
+  #push:
+  #  branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
