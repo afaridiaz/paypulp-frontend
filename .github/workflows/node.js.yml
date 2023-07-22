@@ -3,7 +3,7 @@
 
 name: Node.js CI
 env:
-  AZUSER: afaridiaz
+  AZUSER: afaridiaz@gmail.com
   MY_RESOURCE_GROUP: migrupoderecursos
   
 on:
