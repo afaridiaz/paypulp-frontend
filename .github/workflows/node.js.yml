@@ -16,11 +16,15 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 19.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
+    - name: crear arquitectura
+      uses: actions/setup-node@v3
+    - run: az appservice plan create --resource-group MY_RESOURCE_GROUP --name MY_APP_SERVICE_PLAN --is-linux
+    - run: az webapp create --name MY_WEBAPP_NAME --plan MY_APP_SERVICE_PLAN --resource-group MY_RESOURCE_GROUP --runtime "NODE|18-lts"
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -30,9 +34,4 @@ jobs:
     - run: npm run build --if-present
       env:
         CI: ""
-    - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v3
-      with:
-        name: node-app
-        path: .
   
